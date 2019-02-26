@@ -1,5 +1,8 @@
 FROM golang:1.8-alpine
-ADD . /go/src/github.com/ishmee1/rest-api
+ADD . /go/src/rest-api
+ADD test.pem /go/bin
+RUN apk add --update git
+RUN go get -d github.com/gorilla/mux
 RUN go install rest-api 
 
 FROM alpine:latest
